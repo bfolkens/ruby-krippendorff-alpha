@@ -2,13 +2,14 @@ require 'matrix'
 
 module KrippendorffAlpha
   # Calculate Krippendorff's alpha (inter-rater reliability)
-  # data = [
+  #
+  # Assumed input (Matrix)
+  # [
   #   [ nil, nil, nil, nil, nil, 3, 4, 1, 2, 1, 1, 3, 3, nil, 3 ],    # coder 1
   #   [ 1, nil, 2, 1, 3, 3, 4, 3, nil, nil, nil, nil, nil, nil, nil], # coder 2
   #   [ nil, nil, 2, 1, 3, 4, 4, nil, 2, 1, 1, 3, 3, nil, 4 ]         # coder 3
   # ]
-  def krippendorff_alpha(conversion = :to_f)
-    diff_func = lambda {|c, k| ((c-k)/(c+k))**2 }
+  def krippendorff_alpha(diff_func = lambda {|c, k| ((c-k)/(c+k))**2 }, conversion = :to_f)
     units = column_vectors.to_a.map {|unit| unit.to_a.compact}.reject {|unit| unit.size < 2}
     n = units.to_a.flatten.count # number of pairable values
 
