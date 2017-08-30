@@ -4,4 +4,6 @@ FFI::Compiler::CompileTask.new('krippendorff_alpha') do |c|
   %w(stddef stdlib stdbool math assert).each do |fname|
     c.have_header?("#{fname}.h", '/usr/include')
   end
+
+  c.cflags << '-std=c99'
 end
