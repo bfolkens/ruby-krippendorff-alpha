@@ -4,14 +4,16 @@ require_relative '../lib/krippendorff_alpha'
 
 class TestKrippendorffAlpha < Minitest::Test
   def setup
+    # http://repository.upenn.edu/cgi/viewcontent.cgi?article=1043&context=asc_papers
     @matrix = Matrix[
-       [ nil, nil, nil, nil, nil, 3, 4, 1, 2, 1, 1, 3, 3, nil, 3 ],    # coder 1
-       [ 1, nil, 2, 1, 3, 3, 4, 3, nil, nil, nil, nil, nil, nil, nil], # coder 2
-       [ nil, nil, 2, 1, 3, 4, 4, nil, 2, 1, 1, 3, 3, nil, 4 ]         # coder 3
+      [1, 2, 3, 3, 2, 1, 4, 1, 2, nil, nil, nil],
+      [1, 2, 3, 3, 2, 2, 4, 1, 2, 5, nil, 3],
+      [nil, 3, 3, 3, 2, 3, 4, 2, 2, 5, 1, nil],
+      [1, 2, 3, 3, 2, 4, 4, 1, 2, 5, 1, nil]
     ]
   end
 
   def test_should_calculate_krippendorff_alpha
-    assert_equal 0.809, @matrix.krippendorff_alpha.round(3)
+    assert_equal 0.849, @matrix.krippendorff_alpha.round(3)
   end
 end
