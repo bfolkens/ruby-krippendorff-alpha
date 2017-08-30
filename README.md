@@ -38,8 +38,8 @@ We observe the following speedup:
 
 Method | user | system | total | real
 --- | ---:| ---:| ---:| ---:
-FFI | 0.010000 | 0.000000 | 0.010000 | 0.010492
 Ruby | 84.350000 | 0.090000 | 84.440000 | 85.125188
+FFI | 0.010000 | 0.000000 | 0.010000 | 0.010492
 
 ## References
 
